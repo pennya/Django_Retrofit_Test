@@ -17,14 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
     //public final String TAG = "KJH";
     private NetworkService networkService;
-    private TextView tv1;
-    private TextView tv2;
-    private TextView tv3;
-    private TextView tv4;
-    private Button bt1;
-    private Button bt2;
-    private Button bt3;
-    private Button bt4;
+    private TextView tv1 , tv2, tv3, tv4, tv5, tv6, tv7, tv8;
+    private Button bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +29,18 @@ public class MainActivity extends AppCompatActivity {
         tv2 = (TextView)findViewById(R.id.tv2);
         tv3 = (TextView)findViewById(R.id.tv3);
         tv4 = (TextView)findViewById(R.id.tv4);
+        tv5 = (TextView)findViewById(R.id.tv5);
+        tv6 = (TextView)findViewById(R.id.tv6);
+        tv7 = (TextView)findViewById(R.id.tv7);
+        tv8 = (TextView)findViewById(R.id.tv8);
         bt1 = (Button)findViewById(R.id.bt1);
         bt2 = (Button)findViewById(R.id.bt2);
         bt3 = (Button)findViewById(R.id.bt3);
         bt4 = (Button)findViewById(R.id.bt4);
+        bt5 = (Button)findViewById(R.id.bt5);
+        bt6 = (Button)findViewById(R.id.bt6);
+        bt7 = (Button)findViewById(R.id.bt7);
+        bt8 = (Button)findViewById(R.id.bt8);
 
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         bt3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //PUT
+                //PATCH
                 Version version = new Version();
                 version.setVersion("1.0.0.0.1");
                 Call<Version> patchCall = networkService.patch_version(1, version);
@@ -146,6 +148,64 @@ public class MainActivity extends AppCompatActivity {
                         Log.i(ApplicationController.TAG, "Fail Message : " + t.getMessage());
                     }
                 });
+            }
+        });
+
+        bt5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Restaurant GET
+                Call<List<Version>> getCall = networkService.get_restaruant();
+                getCall.enqueue(new Callback<List<Version>>() {
+                    @Override
+                    public void onResponse(Call<List<Version>> call, Response<List<Version>> response) {
+                        if( response.isSuccessful()) {
+                            List<Version> versionList = response.body();
+
+                            String version_txt = "";
+                            for(Version version : versionList){
+                                version_txt += version.getVersion() + "\n";
+                            }
+
+                            tv5.setText(version_txt);
+                        } else {
+                            int StatusCode = response.code();
+                            Log.i(ApplicationController.TAG, "Status Code : " + StatusCode);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Version>> call, Throwable t) {
+                        Log.i(ApplicationController.TAG, "Fail Message : " + t.getMessage());
+                    }
+                });
+            }
+        });
+
+        bt6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Restaurant POST
+                User user = new User();
+                user.setId("kim222");
+                user.setPassword("kim222");
+                user.setEmail("rlawlgns077@naver.com");
+
+
+            }
+        });
+
+        bt7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Restaurant PATCH
+            }
+        });
+
+        bt8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Restaurant DELETE
             }
         });
 

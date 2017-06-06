@@ -32,4 +32,23 @@ public interface NetworkService {
 
     @GET("/api/versions/{pk}/")
     Call<Version> get_pk_version(@Path("pk") int pk);
+
+
+
+
+
+    @POST("/api/restaurants/")
+    Call<Version> post_restaruant(@Body Restaurant restaruant);
+
+    @PATCH("/api/restaurants/{pk}/")
+    Call<Version> patch_restaruant(@Path("pk") int pk, @Body Restaurant restaruant);
+
+    @DELETE("/api/restaurants/{pk}/")
+    Call<Version> delete_restaruant(@Path("pk") int pk);
+
+    @GET("/api/restaurants/")
+    Call<List<Version>> get_restaruant();
+
+    @GET("/api/restaurants/{pk}/")
+    Call<Version> get_pk_restaruant(@Path("pk") int pk);
 }
