@@ -5,20 +5,12 @@ package com.example.kjh.retrofit_test;
  */
 
 public class Restaurant {
-    public User owner;
     public String name;
     public String address;
-    public Category category;
-    public Weather weather;
-    public Distance distance;
-
-    public User getOwner() {
-        return owner;
-    }
-
-    public void setOwner(User owner) {
-        this.owner = owner;
-    }
+    public int category;
+    public int weather;
+    public int distance;
+    public String description;
 
     public String getName() {
         return name;
@@ -36,27 +28,36 @@ public class Restaurant {
         this.address = address;
     }
 
-    public Category getCategory() {
+    public int getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(int category) {
         this.category = category;
     }
 
-    public Weather getWeather() {
+    public int getWeather() {
         return weather;
     }
 
-    public void setWeather(Weather weather) {
+    public void setWeather(int weather) {
         this.weather = weather;
     }
 
-    public Distance getDistance() {
+    public int getDistance() {
         return distance;
     }
 
-    public void setDistance(Distance distance) {
+    public void setDistance(int distance) {
         this.distance = distance;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
+

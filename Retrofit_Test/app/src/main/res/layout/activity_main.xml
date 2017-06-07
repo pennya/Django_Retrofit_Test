@@ -13,7 +13,7 @@
         android:id="@+id/bt1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="GET"/>
+        android:text="VERSION GET"/>
 
     <TextView
         android:id="@+id/tv2"
@@ -24,7 +24,7 @@
         android:id="@+id/bt2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="POST"/>
+        android:text="VERSION POST"/>
 
     <TextView
         android:id="@+id/tv3"
@@ -35,7 +35,7 @@
         android:id="@+id/bt3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="PATCH"/>
+        android:text="VERSION PATCH"/>
 
     <TextView
         android:id="@+id/tv4"
@@ -46,7 +46,7 @@
         android:id="@+id/bt4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="DELETE"/>
+        android:text="VERSION DELETE"/>
 
     <TextView
         android:id="@+id/tv5"
@@ -57,7 +57,7 @@
         android:id="@+id/bt5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="GET"/>
+        android:text="RESTAURANT GET"/>
 
     <TextView
         android:id="@+id/tv6"
@@ -68,7 +68,7 @@
         android:id="@+id/bt6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="POST"/>
+        android:text="RESTAURANT POST"/>
 
     <TextView
         android:id="@+id/tv7"
@@ -79,7 +79,7 @@
         android:id="@+id/bt7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="PATCH"/>
+        android:text="RESTAURANT PATCH"/>
 
     <TextView
         android:id="@+id/tv8"
@@ -90,6 +90,6 @@
         android:id="@+id/bt8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="DELETE"/>
+        android:text="RESTAURANT DELETE"/>
 
 </LinearLayout>

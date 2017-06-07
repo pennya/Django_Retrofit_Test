@@ -32,8 +32,8 @@ public class ApplicationController extends Application {
     public void buildNetworkService(String ip, int port){
         synchronized (ApplicationController.class){
             if (networkService == null){
-                //baseUrl = String.format("http://%s:%d/", ip, port);
-                baseUrl = String.format("http://%s/", ip);
+                baseUrl = String.format("http://%s:%d/", ip, port);
+                //baseUrl = String.format("http://%s/", ip);
                 Log.i(TAG, baseUrl);
                 Gson gson = new GsonBuilder().create();
 

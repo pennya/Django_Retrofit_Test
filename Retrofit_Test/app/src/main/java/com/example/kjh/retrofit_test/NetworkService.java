@@ -6,6 +6,8 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
@@ -38,17 +40,17 @@ public interface NetworkService {
 
 
     @POST("/api/restaurants/")
-    Call<Version> post_restaruant(@Body Restaurant restaruant);
+    Call<Restaurant> post_restaruant(@Body Restaurant restaruant);
 
     @PATCH("/api/restaurants/{pk}/")
-    Call<Version> patch_restaruant(@Path("pk") int pk, @Body Restaurant restaruant);
+    Call<Restaurant> patch_restaruant(@Path("pk") int pk, @Body Restaurant restaruant);
 
     @DELETE("/api/restaurants/{pk}/")
-    Call<Version> delete_restaruant(@Path("pk") int pk);
+    Call<Restaurant> delete_restaruant(@Path("pk") int pk);
 
     @GET("/api/restaurants/")
-    Call<List<Version>> get_restaruant();
+    Call<List<Restaurant>> get_restaruant();
 
     @GET("/api/restaurants/{pk}/")
-    Call<Version> get_pk_restaruant(@Path("pk") int pk);
+    Call<Restaurant> get_pk_restaruant(@Path("pk") int pk);
 }
