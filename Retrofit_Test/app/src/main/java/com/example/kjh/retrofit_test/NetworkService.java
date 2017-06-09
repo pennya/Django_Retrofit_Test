@@ -53,4 +53,7 @@ public interface NetworkService {
 
     @GET("/api/restaurants/{pk}/")
     Call<Restaurant> get_pk_restaruant(@Path("pk") int pk);
+
+    @GET("/api/weathers/{pk}/restaurant_list/")
+    Call<List<Restaurant>> get_weather_pk_restaruant(@Path("pk") int pk);
 }

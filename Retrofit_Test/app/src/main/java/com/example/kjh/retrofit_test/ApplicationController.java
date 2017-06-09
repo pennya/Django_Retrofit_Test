@@ -2,10 +2,6 @@ package com.example.kjh.retrofit_test;
 
 import android.app.Application;
 import android.util.Log;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -33,20 +29,31 @@ public class ApplicationController extends Application {
         synchronized (ApplicationController.class){
             if (networkService == null){
                 baseUrl = String.format("http://%s:%d/", ip, port);
-                //baseUrl = String.format("http://%s/", ip);
                 Log.i(TAG, baseUrl);
-                Gson gson = new GsonBuilder().create();
-
-                GsonConverterFactory factory = GsonConverterFactory.create(gson);
 
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(baseUrl)
-                        .addConverterFactory(factory)
+                        .addConverterFactory(GsonConverterFactory.create())
                         .build();
 
                 networkService = retrofit.create(NetworkService.class);
             }
         }
+    }
 
+    public void buildNetworkService(String ip){
+        synchronized (ApplicationController.class){
+            if (networkService == null){
+                baseUrl = String.format("http://%s/", ip);
+                Log.i(TAG, baseUrl);
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl(baseUrl)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                networkService = retrofit.create(NetworkService.class);
+            }
+        }
     }
 }

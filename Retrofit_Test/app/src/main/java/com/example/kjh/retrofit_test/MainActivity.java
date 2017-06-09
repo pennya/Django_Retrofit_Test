@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.tv6) TextView tv6;
     @BindView(R.id.tv7) TextView tv7;
     @BindView(R.id.tv8) TextView tv8;
+    @BindView(R.id.tv9) TextView tv9;
 
     @OnClick(R.id.bt1)
     public void bt1_Click()
@@ -262,6 +263,41 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @OnClick(R.id.bt9)
+    public void bt9_click(){
+        Call<List<Restaurant>> get_weather_pk_Call = networkService.get_weather_pk_restaruant(1);
+        get_weather_pk_Call.enqueue(new Callback<List<Restaurant>>() {
+            @Override
+            public void onResponse(Call<List<Restaurant>> call, Response<List<Restaurant>> response) {
+                if( response.isSuccessful()) {
+                    List<Restaurant> restaurantList = response.body();
+
+                    String restaurant_txt = "";
+                    for(Restaurant restaurant : restaurantList){
+                        restaurant_txt += restaurant.getName() +
+                                restaurant.getAddress() +
+                                restaurant.getCategory() +
+                                restaurant.getWeather() +
+                                restaurant.getDistance() +
+                                restaurant.getDescription() +
+                                "\n";
+                    }
+
+                    tv9.setText(restaurant_txt);
+                } else {
+                    int StatusCode = response.code();
+                    Log.i(ApplicationController.TAG, "Status Code : " + StatusCode + " Error Message : " + response.errorBody());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Restaurant>> call, Throwable t) {
+                Log.i(ApplicationController.TAG, "Fail Message : " + t.getMessage());
+            }
+        });
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -269,8 +305,8 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         ApplicationController application = ApplicationController.getInstance();
-        //application.buildNetworkService("25779917.ngrok.io", 8000);
-        //application.buildNetworkService("본인IP", 8000);
+        //application.buildNetworkService("61fa624f.ngrok.io");
+        application.buildNetworkService("자기 ip 주소", 8000);
         networkService = ApplicationController.getInstance().getNetworkService();
     }
 }
